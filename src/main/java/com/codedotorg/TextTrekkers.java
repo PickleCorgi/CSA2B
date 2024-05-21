@@ -49,7 +49,7 @@ public class TextTrekkers {
         gameplay.setWrapText(true);
 
         hasKey = false;
-        doorLocked = false;
+        doorLocked = true;
 
         inputField = createInputField();
     }
@@ -153,6 +153,7 @@ public class TextTrekkers {
             else {
                 doorLocked = false;
                 response = "door is unlocked.";
+            }
         }
         else if (command.equals("open door")) {
             if (doorLocked == true) {
@@ -168,7 +169,8 @@ public class TextTrekkers {
 
         return response;
     }
-}
+    
+
 
     /**
      * Creates a new TextField for user input and sets an action event to handle the input.
