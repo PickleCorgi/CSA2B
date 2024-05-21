@@ -125,10 +125,50 @@ public class TextTrekkers {
      * @param input The user's command.
      * @return A string describing the result of the user's command.
      */
-    public String processCommand(String input) {
-        
-        return "";
+    public String processCommand(String command) {
+        String response = "";
+
+        if (command.equals("go north")) {
+            // update game state for going north
+            response = "You go north.";
+        } 
+        else if (command.equals("pick up key")) {
+            // update game state for going south
+            if (hasKey == true){
+                response = "key is already picked up.";
+            }
+            else {
+                response = "picked up key.";
+                hasKey = true;
+            }
+            
+        } // add more commands as needed
+        else if (command.equals("use key")) {
+            if (hasKey == false) {
+                response = "you don't have a key.";
+            }
+            else if (doorLocked == false) {
+                response = "door is already unlocked.";
+            }
+            else {
+                doorLocked = false;
+                response = "door is unlocked.";
+        }
+        else if (command.equals("open door")) {
+            if (doorLocked == true) {
+                response = "door is locked.";
+            }
+            else {
+                response = "You open the door and escape! You win!";
+            }
+        }
+        else {
+            response = "I don't understand that command.";
+        }
+
+        return response;
     }
+}
 
     /**
      * Creates a new TextField for user input and sets an action event to handle the input.
